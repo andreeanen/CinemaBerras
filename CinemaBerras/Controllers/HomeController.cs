@@ -1,6 +1,7 @@
 ﻿using CinemaBerras.Data;
 using CinemaBerras.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
@@ -20,9 +21,9 @@ namespace CinemaBerras.Controllers
 
         public IActionResult Index()
         {
-            var movies = _cinemaContext.Movies.ToList();
+            var displays = _cinemaContext.Displays.Include(x => x.Movie).ToList();
 
-            return View(movies);
+            return View(displays);
         }
 
         public IActionResult Privacy()

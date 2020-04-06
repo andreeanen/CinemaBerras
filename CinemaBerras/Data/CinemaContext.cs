@@ -14,5 +14,11 @@ namespace CinemaBerras.Data
 
         }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Display> Displays { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Display>().HasOne(d => d.Movie).WithMany(m => m.Displays);
+        }
     }
 }
