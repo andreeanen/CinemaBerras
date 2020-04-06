@@ -10,5 +10,8 @@ namespace CinemaBerras.Models
         public int MovieId { get; set; }
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
+        public int SalonId { get; set; }
+        [ForeignKey("SalonId")]
+        public Salon Salon { get; set; }
     }
 }

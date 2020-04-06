@@ -21,7 +21,7 @@ namespace CinemaBerras.Controllers
 
         public IActionResult Index()
         {
-            var displays = _cinemaContext.Displays.Include(x => x.Movie).ToList();
+            var displays = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).ToList();
 
             return View(displays);
         }

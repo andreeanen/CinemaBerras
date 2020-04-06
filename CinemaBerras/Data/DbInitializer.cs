@@ -11,10 +11,10 @@ namespace CinemaBerras.Data
             cinemaContext.Database.EnsureDeleted();
             cinemaContext.Database.EnsureCreated();
 
-            if (!cinemaContext.Displays.Any())
+            if (!cinemaContext.Movies.Any())
             {
                 var movies = new Movie[]
-            {
+                {
                     new Movie
                     {
                         Title="Titanic"
@@ -25,29 +25,56 @@ namespace CinemaBerras.Data
                         Title="Shrek"
                         //Time=DateTime.UtcNow.AddHours(1)
                     }
-            };
+                };
 
                 cinemaContext.Movies.AddRange(movies);
                 cinemaContext.SaveChanges();
+            }
+
+            if (!cinemaContext.Salons.Any())
+            {
+                var salons = new Salon[]
+                {
+                    new Salon
+                    {
+                           Name="Room 1",
+                           Seats = 50
+                    },
+                    new Salon
+                    {
+                            Name="Room 2",
+                            Seats=100
+                    }
+                };
+                cinemaContext.Salons.AddRange(salons);
+                cinemaContext.SaveChanges();
+            }
+
+            if (!cinemaContext.Displays.Any())
+            {
 
                 var displays = new Display[]
                 {
                     new Display
                     {
                        MovieId=1,
+                       SalonId=2,
                        Time= DateTime.UtcNow
                     },
                     new Display
                     {
                         MovieId=2,
+                        SalonId=1,
                         Time=DateTime.UtcNow.AddHours(1)
                     }
 
                 };
                 cinemaContext.Displays.AddRange(displays);
                 cinemaContext.SaveChanges();
-            }
-        }
 
+            }
+
+
+        }
     }
 }

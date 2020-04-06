@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaBerras.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20200406091227_AddDisplayToDb")]
-    partial class AddDisplayToDb
+    [Migration("20200406102542_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,12 +31,17 @@ namespace CinemaBerras.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
+                    b.Property<int>("SalonId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MovieId");
+
+                    b.HasIndex("SalonId");
 
                     b.ToTable("Displays");
                 });
@@ -56,11 +61,35 @@ namespace CinemaBerras.Migrations
                     b.ToTable("Movies");
                 });
 
+            modelBuilder.Entity("CinemaBerras.Models.Salon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Seats")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Salons");
+                });
+
             modelBuilder.Entity("CinemaBerras.Models.Display", b =>
                 {
                     b.HasOne("CinemaBerras.Models.Movie", "Movie")
                         .WithMany("Displays")
                         .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaBerras.Models.Salon", "Salon")
+                        .WithMany("Displays")
+                        .HasForeignKey("SalonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
