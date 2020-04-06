@@ -13,5 +13,7 @@ namespace CinemaBerras.Models
         public int SalonId { get; set; }
         [ForeignKey("SalonId")]
         public Salon Salon { get; set; }
+        // [Range(1, 13)]
+        public int TicketsSold { get; set; }
     }
 }

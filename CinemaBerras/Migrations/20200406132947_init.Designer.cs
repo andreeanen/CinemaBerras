@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaBerras.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20200406102542_init")]
+    [Migration("20200406132947_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace CinemaBerras.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("SalonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketsSold")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Time")

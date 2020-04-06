@@ -1,0 +1,74 @@
+﻿@model CinemaBerras.Models.Display
+@{
+    ViewData["Title"] = "View";
+}
+
+
+<h4>Book your tickets</h4>
+<hr />
+
+<div class="border container" style="padding:30px">
+    <form method="post" asp-action="Confirm">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Movie.Title">Movie title</label>
+            </div>
+            <div class="col-6">
+                @Model.Movie.Title
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Time">Movie starts at</label>
+            </div>
+            <div class="col-6">
+                @Model.Time
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Salon.Name">Salon</label>
+            </div>
+            <div class="col-6">
+                @Model.Salon.Name
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Salon.Seats">Available seats</label>
+            </div>
+            <div class="col-6">
+                @Model.Salon.Seats
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="TicketsSold">Number of tickets</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="TicketsSold" class="form-control" />
+                <span asp-validation-for="TicketsSold" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <a asp-controller="Home" asp-action="Index">Back to list </a>
+            </div>
+            <div class="col-6">
+                <button type="submit" class="btn btn-success form-control">Book tickets </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
