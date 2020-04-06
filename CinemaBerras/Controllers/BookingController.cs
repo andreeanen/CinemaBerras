@@ -39,6 +39,9 @@ namespace CinemaBerras.Controllers
             return View(Display);
         }
 
-
+        public IActionResult Confirm()
+        {
+            return View();
+        }
     }
 }

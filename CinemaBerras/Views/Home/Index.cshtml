@@ -1,7 +1,4 @@
 ﻿@model IEnumerable<CinemaBerras.Models.Display>
-@*@{
-        ViewData["Title"] = "Home Page";
-    }*@
 
 <br />
 <div class="container row p-0 m-0">
@@ -10,59 +7,59 @@
     </div>
 
     <div class="col-12 border p-3 mt-3">
-        <form method="post">
-            @if (Model.Count() > 0)
-            {
-                <table class=" table table-striped border">
 
-                    <tr class="table table-secondary">
+        @if (Model.Count() > 0)
+        {
+            <table class=" table table-striped border">
 
-                        <th>
-                            <label asp-for="FirstOrDefault().Movie.Title"></label>
-                        </th>
-                        <th>
-                            <label asp-for="FirstOrDefault().Time"></label>
-                        </th>
-                        <th>
-                            <label asp-for="FirstOrDefault().Salon"></label>
-                        </th>
-                        <th>
-                            <label>Available seats</label>
-                        </th>
-                        <th>
-                            <label></label>
-                        </th>
+                <tr class="table table-secondary">
+
+                    <th>
+                        <label asp-for="FirstOrDefault().Movie.Title"></label>
+                    </th>
+                    <th>
+                        <label asp-for="FirstOrDefault().Time"></label>
+                    </th>
+                    <th>
+                        <label asp-for="FirstOrDefault().Salon"></label>
+                    </th>
+                    <th>
+                        <label>Available seats</label>
+                    </th>
+                    <th>
+                        <label></label>
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Movie.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Salon.Name)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Salon.Seats)
+                        </td>
+                        <td>
+                            <a asp-controller="Booking" asp-action="Show" asp-route-id="@item.Id" class="btn btn-success btn-sm">Book</a>
+
+                        </td>
                     </tr>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(m => item.Movie.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => item.Time)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => item.Salon.Name)
+                }
 
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => item.Salon.Seats)
-                            </td>
-                            <td>
-                                <button asp-controller="Booking" asp-action="Show" asp-route-id="@item.Id" class="btn btn-success btn-sm">Book</button>
+            </table>
+        }
+        else
+        {
+            <p>No movies available today</p>
+        }
 
-                            </td>
-                        </tr>
-                    }
-
-                </table>
-            }
-            else
-            {
-                <p>No movies available today</p>
-            }
-        </form>
 
     </div>
 </div>

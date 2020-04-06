@@ -7,6 +7,7 @@ namespace CinemaBerras.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Movie title")]
         public string Title { get; set; }
         public IList<Display> Displays { get; set; }
     }

@@ -1,7 +1,7 @@
 ﻿@model CinemaBerras.Models.Display
-@{
-    ViewData["Title"] = "View";
-}
+@*@{
+        ViewData["Title"] = "View";
+    }*@
 
 
 <h4>Book your tickets</h4>
@@ -16,7 +16,7 @@
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="form-group row">
             <div class="col-3">
-                <label asp-for="Movie.Title">Movie title</label>
+                <label asp-for="Movie.Title"></label>
             </div>
             <div class="col-6">
                 @Model.Movie.Title
@@ -24,15 +24,15 @@
         </div>
         <div class="form-group row">
             <div class="col-3">
-                <label asp-for="Time">Movie starts at</label>
+                <label asp-for="Time"></label>
             </div>
             <div class="col-6">
-                @Model.Time
+                @Model.Time.Hour:@Model.Time.Minute
             </div>
         </div>
         <div class="form-group row">
             <div class="col-3">
-                <label asp-for="Salon.Name">Salon</label>
+                <label asp-for="Salon.Name"></label>
             </div>
             <div class="col-6">
                 @Model.Salon.Name
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group row">
             <div class="col-3">
-                <label asp-for="Salon.Seats">Available seats</label>
+                <label asp-for="Salon.Seats"></label>
             </div>
             <div class="col-6">
                 @Model.Salon.Seats
@@ -49,19 +49,20 @@
 
         <div class="form-group row">
             <div class="col-3">
-                <label asp-for="TicketsSold">Number of tickets</label>
+                <label asp-for="TicketsSold">Book tickets (max. 12)</label>
             </div>
             <div class="col-6">
-                <input asp-for="TicketsSold" class="form-control" />
+                <input Type="number" min="0" max="12" asp-for="TicketsSold" class="form-control" />
+
                 <span asp-validation-for="TicketsSold" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-3">
-                <a asp-controller="Home" asp-action="Index">Back to list </a>
+                <a asp-controller="Home" asp-action="Index">Back to movie list</a>
             </div>
             <div class="col-6">
-                <button type="submit" class="btn btn-success form-control">Book tickets </button>
+                <input type="submit" value="Book tickets" class="btn btn-success form-control" />
             </div>
         </div>
     </form>

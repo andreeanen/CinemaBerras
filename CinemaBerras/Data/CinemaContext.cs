@@ -25,6 +25,8 @@ namespace CinemaBerras.Data
             modelBuilder.Entity<Salon>()
                 .HasMany(s => s.Displays)
                 .WithOne(d => d.Salon);
+
+            //modelBuilder.Entity<Display>().Property(x => x.TicketsSold).HasMaxLength(12);
         }
     }
 }
