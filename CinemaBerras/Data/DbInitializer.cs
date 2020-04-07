@@ -8,7 +8,7 @@ namespace CinemaBerras.Data
     {
         public static void Initialize(CinemaContext cinemaContext)
         {
-            //cinemaContext.Database.EnsureDeleted();
+            cinemaContext.Database.EnsureDeleted();
             cinemaContext.Database.EnsureCreated();
 
             if (!cinemaContext.Movies.Any())
@@ -36,7 +36,7 @@ namespace CinemaBerras.Data
                     new Salon
                     {
                            Name="Room 1",
-                           Seats = 50
+                           Seats = 10
                     },
                     new Salon
                     {

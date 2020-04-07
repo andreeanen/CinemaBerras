@@ -33,10 +33,15 @@ namespace CinemaBerras.Controllers
             return View(Display);
         }
 
-        public int ticketsSoldTotal = 0;
-        public IActionResult Confirm(int? id)
+        [HttpPost]
+        public IActionResult Show(Display model)
         {
-            var oldEntity = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var oldEntity = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == model.Id);
 
             var totalTicketAmount = Display.TicketsSold + oldEntity.TotalTicketsSold;
             var isValidTicketAmount = totalTicketAmount <= oldEntity.Salon.Seats;
@@ -50,8 +55,17 @@ namespace CinemaBerras.Controllers
             }
             else
             {
-                return RedirectToAction("Show");
+                ModelState.AddModelError("TicketsSold", "The amount of available seats is lower then the number of tickets you want to book.Try again!");
+                return View(oldEntity);
             }
+
+            return RedirectToAction("Confirm", new { id = Display.Id });
+        }
+
+
+        public IActionResult Confirm(int? id)
+        {
+            var oldEntity = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);
 
             return View(oldEntity);
         }
