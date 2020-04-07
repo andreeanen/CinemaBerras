@@ -1,0 +1,18 @@
+﻿@model CinemaBerras.Models.Display
+@*@{
+        ViewData["Title"] = "Confirm";
+    }*@
+
+<h1 class="text-success">Your booking is confirmed!</h1>
+<div class="border container" style="padding:30px">
+
+    <p class="text-black-50">
+        You booked  @Model.TicketsSold tickets for the movie @Model.Movie.Title
+        that starts at @Model.Time.Hour:@Model.Time.Minute in @Model.Salon.Name
+    </p>
+    <p>Enjoy!</p>
+
+</div>
+<div class="col-3">
+    <a asp-controller="Home" asp-action="Index">Back to movie list</a>
+</div>

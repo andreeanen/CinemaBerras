@@ -8,7 +8,7 @@ namespace CinemaBerras.Data
     {
         public static void Initialize(CinemaContext cinemaContext)
         {
-            //cinemaContext.Database.EnsureDeleted();
+            cinemaContext.Database.EnsureDeleted();
             cinemaContext.Database.EnsureCreated();
 
             if (!cinemaContext.Movies.Any())

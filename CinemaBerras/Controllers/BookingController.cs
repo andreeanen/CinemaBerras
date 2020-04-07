@@ -12,6 +12,7 @@ namespace CinemaBerras.Controllers
         [BindProperty]
         public Display Display { get; set; }
 
+
         public BookingController(CinemaContext cinemaContext)
         {
             _cinemaContext = cinemaContext;
@@ -23,13 +24,7 @@ namespace CinemaBerras.Controllers
         public IActionResult Show(int? id)
         {
             Display = new Display();
-            var Display2 = new Display();
             Display = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);
-            //Display2 = _cinemaContext.Displays.Where(d => d.Id == id);
-
-            //Display.TicketsSold += 1;
-            //_cinemaContext.Displays.Update(Display);
-            //_cinemaContext.SaveChanges();
 
             if (Display == null)
             {
@@ -39,9 +34,20 @@ namespace CinemaBerras.Controllers
             return View(Display);
         }
 
-        public IActionResult Confirm()
+        public int ticketsSoldTotal = 0;
+        public IActionResult Confirm(int? id, int numberOfBookedTickets)
         {
-            return View();
+
+            Display = new Display();
+
+            Display = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);
+            Display.TicketsSold = numberOfBookedTickets;
+            Display.TotalTicketsSold += numberOfBookedTickets;
+            Display.TicketsAvailable = Display.Salon.Seats - Display.TotalTicketsSold;
+            _cinemaContext.Displays.Update(Display);
+            _cinemaContext.SaveChanges();
+
+            return View(Display);
         }
     }
 }
