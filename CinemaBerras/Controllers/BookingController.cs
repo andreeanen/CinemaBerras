@@ -23,7 +23,6 @@ namespace CinemaBerras.Controllers
         }
         public IActionResult Show(int? id)
         {
-            Display = new Display();
             Display = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);
 
             if (Display == null)
@@ -35,19 +34,41 @@ namespace CinemaBerras.Controllers
         }
 
         public int ticketsSoldTotal = 0;
-        public IActionResult Confirm(int? id, int numberOfBookedTickets)
+        public IActionResult Confirm(int? id)
         {
+            var oldEntity = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);
 
-            Display = new Display();
+            var totalTicketAmount = Display.TicketsSold + oldEntity.TotalTicketsSold;
+            var isValidTicketAmount = totalTicketAmount <= oldEntity.Salon.Seats;
 
-            Display = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);
-            Display.TicketsSold = numberOfBookedTickets;
-            Display.TotalTicketsSold += numberOfBookedTickets;
-            Display.TicketsAvailable = Display.Salon.Seats - Display.TotalTicketsSold;
-            _cinemaContext.Displays.Update(Display);
-            _cinemaContext.SaveChanges();
+            if (isValidTicketAmount)
+            {
+                oldEntity.TicketsSold = Display.TicketsSold;
+                oldEntity.TotalTicketsSold += Display.TicketsSold;
+                _cinemaContext.Displays.Update(oldEntity);
+                _cinemaContext.SaveChanges();
+            }
+            else
+            {
+                return RedirectToAction("Show");
+            }
 
-            return View(Display);
+            //oldEntity.TicketsSold = Display.TicketsSold;
+
+
+            //  oldEntity.TicketsAvailable = oldEntity.Salon.Seats - oldEntity.TotalTicketsSold;
+            //if ()
+            //{
+
+
+            //}
+            //else
+            //{
+
+            //    return NotFound();
+            //}
+
+            return View(oldEntity);
         }
     }
 }

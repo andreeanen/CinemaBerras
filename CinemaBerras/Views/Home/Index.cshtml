@@ -34,29 +34,19 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(m => item.Movie.Title)
+                            @item.Movie.Title
                         </td>
                         <td>
-                            @Html.DisplayFor(m => item.Time)
+                            @item.Time
                         </td>
                         <td>
-                            @Html.DisplayFor(m => item.Salon.Name)
-
+                            @item.Salon.Name
                         </td>
                         <td>
-                            @if (item.TicketsSold == 0)
-                            {
-                                @Html.DisplayFor(m => item.Salon.Seats)
-                            }
-                            else
-                            {
-
-                                @Html.DisplayFor(m => item.TicketsAvailable)
-                            }
+                            @(item.Salon.Seats-item.TotalTicketsSold)
                         </td>
                         <td>
                             <a asp-controller="Booking" asp-action="Show" asp-route-id="@item.Id" class="btn btn-success btn-sm">Book</a>
-
                         </td>
                     </tr>
                 }

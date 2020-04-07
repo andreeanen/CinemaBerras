@@ -3,14 +3,16 @@
         ViewData["Title"] = "Confirm";
     }*@
 
-<h1 class="text-success">Your booking is confirmed!</h1>
+<h2 class="text-success">Your booking is confirmed!</h2>
 <div class="border container" style="padding:30px">
 
-    <p class="text-black-50">
-        You booked  @Model.TicketsSold tickets for the movie @Model.Movie.Title
-        that starts at @Model.Time.Hour:@Model.Time.Minute in @Model.Salon.Name
-    </p>
-    <p>Enjoy!</p>
+    <h4 class="">
+        You booked  @Model.TicketsSold  @(@Model.TicketsSold ==1?"ticket" : "tickets") for the movie @Model.Movie.Title
+        that starts at @Model.Time.Hour:@Model.Time.Minute in @Model.Salon.Name!
+        <br /><br /><br />
+        Enjoy!
+    </h4>
+
 
 </div>
 <div class="col-3">

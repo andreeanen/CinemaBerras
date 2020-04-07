@@ -49,7 +49,7 @@
                 }
                 else
                 {
-                    @Model.TicketsAvailable
+                    <span>@(Model.Salon.Seats - Model.TotalTicketsSold)</span>
                 }
             </div>
         </div>
@@ -59,7 +59,8 @@
                 <label asp-for="TicketsSold">Book tickets (max. 12)</label>
             </div>
             <div class="col-6">
-                <input Type="number" min="1" value="1" name="numberOfBookedTickets" asp-for="TicketsSold" class="form-control" />
+                <input min="1" value="1" asp-for="TicketsSold" class="form-control" />
+                @*   <input Type="number" min="1" value="1" name="numberOfBookedTickets" asp-for="TicketsSold" class="form-control" />*@
 
                 <span asp-validation-for="TicketsSold" class="text-danger"></span>
             </div>
@@ -69,7 +70,10 @@
                 <a asp-controller="Home" asp-action="Index">Back to movie list</a>
             </div>
             <div class="col-6">
+
+
                 <input type="submit" asp-controller="Booking" asp-action="Confirm" value="Book tickets" class="btn btn-success form-control" />
+
             </div>
         </div>
     </form>
