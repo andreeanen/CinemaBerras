@@ -46,7 +46,15 @@
                             @(item.Salon.Seats-item.TotalTicketsSold)
                         </td>
                         <td>
-                            <a asp-controller="Booking" asp-action="Show" asp-route-id="@item.Id" class="btn btn-success btn-sm">Book</a>
+                            @if ((item.Salon.Seats - item.TotalTicketsSold) == 0)
+                            {
+                                <button type="button" class="btn btn-danger btn-sm" disabled>Fully booked</button>
+                            }
+                            else
+                            {
+
+                                <a asp-controller="Booking" asp-action="Show" asp-route-id="@item.Id" class="btn btn-success btn-sm">Book</a>
+                            }
                         </td>
                     </tr>
                 }
