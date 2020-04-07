@@ -43,7 +43,8 @@ namespace CinemaBerras.Migrations
                     Time = table.Column<DateTime>(nullable: false),
                     MovieId = table.Column<int>(nullable: false),
                     SalonId = table.Column<int>(nullable: false),
-                    TicketsSold = table.Column<int>(nullable: false)
+                    TicketsSold = table.Column<int>(nullable: false),
+                    TotalTicketsSold = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -19,7 +19,5 @@ namespace CinemaBerras.Models
         [Range(1, 12)]
         public int TicketsSold { get; set; }
         public int TotalTicketsSold { get; set; }
-        [Display(Name = "Available seats")]
-        public int TicketsAvailable { get; set; }
     }
 }

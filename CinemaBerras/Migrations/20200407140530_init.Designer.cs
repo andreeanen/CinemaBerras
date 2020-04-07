@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaBerras.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20200406195155_AddAdnotaions")]
-    partial class AddAdnotaions
+    [Migration("20200407140530_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,9 @@ namespace CinemaBerras.Migrations
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("TotalTicketsSold")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

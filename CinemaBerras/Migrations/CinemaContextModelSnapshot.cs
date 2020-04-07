@@ -32,9 +32,6 @@ namespace CinemaBerras.Migrations
                     b.Property<int>("SalonId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketsAvailable")
-                        .HasColumnType("int");
-
                     b.Property<int>("TicketsSold")
                         .HasColumnType("int");
 
