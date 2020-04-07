@@ -53,21 +53,6 @@ namespace CinemaBerras.Controllers
                 return RedirectToAction("Show");
             }
 
-            //oldEntity.TicketsSold = Display.TicketsSold;
-
-
-            //  oldEntity.TicketsAvailable = oldEntity.Salon.Seats - oldEntity.TotalTicketsSold;
-            //if ()
-            //{
-
-
-            //}
-            //else
-            //{
-
-            //    return NotFound();
-            //}
-
             return View(oldEntity);
         }
     }

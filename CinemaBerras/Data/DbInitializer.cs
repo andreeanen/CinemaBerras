@@ -18,12 +18,10 @@ namespace CinemaBerras.Data
                     new Movie
                     {
                         Title="Titanic"
-                        //Time= DateTime.UtcNow
                     },
                     new Movie
                     {
                         Title="Shrek"
-                        //Time=DateTime.UtcNow.AddHours(1)
                     }
                 };
 
@@ -59,7 +57,7 @@ namespace CinemaBerras.Data
                     {
                        MovieId=1,
                        SalonId=2,
-                       Time= DateTime.UtcNow
+                       Time= DateTime.UtcNow.AddHours(2)
                     },
                     new Display
                     {

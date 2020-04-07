@@ -7,7 +7,7 @@ namespace CinemaBerras.Models
     public class Display
     {
         public int Id { get; set; }
-        [DisplayFormat(DataFormatString = "{0:HH:mm}")]
+        [DisplayFormat(DataFormatString = "{HH:mm}")]
         [Display(Name = "Starts at")]
         public DateTime Time { get; set; }
         public int MovieId { get; set; }
