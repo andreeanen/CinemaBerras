@@ -2,6 +2,7 @@
 using CinemaBerras.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,10 +29,21 @@ namespace CinemaBerras.Controllers
 
         public async Task<IActionResult> Index(string sortOrder)
         {
-            ViewData["TitleSortParm"] = sortOrder == "title_desc" ? "title_asc" : "title_desc";
-            ViewData["TimeSortParm"] = sortOrder == "starts_desc" ? "starts_asc" : "starts_desc";
-            ViewData["SeatsSortParm"] = sortOrder == "seats_asc" ? "seats_desc" : "seats_asc";
-            ViewData["SalonSortParm"] = sortOrder == "salon_asc" ? "salon_desc" : "salon_asc";
+
+            ViewData["TitleAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_asc" : "title_asc";
+            ViewData["TitleDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "title_desc";
+            ViewData["TimeAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "starts_asc" : "starts_asc";
+            ViewData["TimeDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "starts_desc" : "starts_desc";
+            ViewData["SeatsAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "seats_asc" : "seats_asc";
+            ViewData["SeatsDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "seats_desc" : "seats_desc";
+            ViewData["SalonAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "salon_asc" : "salon_asc";
+            ViewData["SalonDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "salon_desc" : "salon_desc";
+
+
+            //ViewData["TitleSortParm"] = sortOrder == "title_asc";
+            //ViewData["TimeSortParm"] = sortOrder == "starts_desc" ? "starts_asc" : "starts_desc";
+            //ViewData["SeatsSortParm"] = sortOrder == "seats_asc" ? "seats_desc" : "seats_asc";
+            //ViewData["SalonSortParm"] = sortOrder == "salon_asc" ? "salon_desc" : "salon_asc";
             var displays = from d in _cinemaContext.Displays
                            .Include(d => d.Movie)
                            .Include(d => d.Salon)
@@ -47,10 +59,10 @@ namespace CinemaBerras.Controllers
                     displays = displays.OrderByDescending(d => d.Salon.Name);
                     break;
                 case "seats_asc":
-                    displays = displays.OrderBy(d => d.Salon.Seats - d.TotalTicketsSold);
+                    displays = displays.OrderBy(d => (d.Salon.Seats - d.TotalTicketsSold));
                     break;
                 case "seats_desc":
-                    displays = displays.OrderByDescending(d => d.Salon.Seats - d.TotalTicketsSold);
+                    displays = displays.OrderByDescending(d => (d.Salon.Seats - d.TotalTicketsSold));
                     break;
                 case "starts_asc":
                     displays = displays.OrderBy(d => d.Time);

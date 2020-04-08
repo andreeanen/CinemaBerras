@@ -163,25 +163,65 @@
         </div>
     </div>*@
 
+<div>
+    <h1 class="text-center mb-5 mt-5 ">Cinema Berras</h1>
+</div>
+@*<div>
+        <h3>Today @Model.FirstOrDefault().Date.ToString("dddd, dd MMMM yyyy")</h3>
+    </div>*@
+
+<nav class="navbar navbar-expand-lg navbar-light  mb-3 ">
+    @*<a class="navbar-brand" href="#"></a>*@
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon color-green"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+            <li class="nav-item  active">
+
+                <a class="nav-link navbar-text-font mr-5"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.FirstOrDefault().Time.ToString("dddd, dd MMMM yyyy") <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active dropdown">
+                <a class="nav-link dropdown-toggle navbar-text-font " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort movies
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TitleAscSortParm"]">Movie title <i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TitleDescSortParm"]">Movie title <i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TimeAscSortParm"]">Time <i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TimeDescSortParm"]">Time <i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SeatsAscSortParm"]">Free seats <i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SeatsDescSortParm"]">Free seats <i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SalonAscSortParm"]">Salon name <i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SalonDescSortParm"]">Salon name <i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+
 
 
 <div class="container  p-0 m-0">
-    <div>
-        <h1>Movie List</h1>
-    </div>
-    <div>
-        <h3>Today @Model.FirstOrDefault().Date.ToString("dddd, dd MMMM yyyy")</h3>
-    </div>
+
 
     @foreach (var item in Model)
     {
 
         <div class="card-deck mb-lg-4">
             <div class="card ">
-                <div class="card-header  bg-dark text-white  ">
+                <div class="card-header  @*bg-dark*@ text-white  ">
                     <h2 class="card-title"> @item.Movie.Title</h2>
                 </div>
-                <div class="card-body bg-secondary text-white">
+                <div class="card-body @*bg-secondary*@ @*text-white*@">
                     @*<div class="d-flex flex-row justify-content-around ">
                             <div class="flex-card-container">
                                 <h5 class="card-text">@item.Time.ToString("HH:mm")</h5>
@@ -219,7 +259,7 @@
                         }
                         else
                         {
-                            <a asp-controller="Booking" asp-action="Show" asp-route-id="@item.Id" class="btn btn-success btn-lg float-right ">Book</a>
+                            <a asp-controller="Booking" asp-action="Show" asp-route-id="@item.Id" class="btn btn-success btn-lg ">Book</a>
                         }
                     </div>
                 </div>
