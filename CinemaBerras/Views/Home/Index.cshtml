@@ -15,16 +15,20 @@
                 <tr class="table table-secondary">
 
                     <th>
-                        <label asp-for="FirstOrDefault().Movie.Title"></label>
+                        @*<label asp-for="FirstOrDefault().Movie.Title"></label>*@
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]" title="Sort movies by title">Movie title</a>
                     </th>
                     <th>
-                        <label asp-for="FirstOrDefault().Time"></label>
+                        @*<label asp-for="FirstOrDefault().Time"></label>*@
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["TimeSortParm"]" title="Sort movies by starting time">Starts at</a>
                     </th>
                     <th>
-                        <label asp-for="FirstOrDefault().Salon"></label>
+                        @*<label asp-for="FirstOrDefault().Salon"></label>*@
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["SalonSortParm"]" title="Sort movies by salon name">Salon</a>
                     </th>
                     <th>
-                        <label>Available seats</label>
+                        @*<label>Available seats</label>*@
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["SeatsSortParm"]" title="Sort movies by available seats in salon">Available seats</a>
                     </th>
                     <th>
                         <label></label>

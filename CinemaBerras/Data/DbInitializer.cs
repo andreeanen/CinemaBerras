@@ -22,6 +22,14 @@ namespace CinemaBerras.Data
                     new Movie
                     {
                         Title="Shrek"
+                    },
+                    new Movie
+                    {
+                        Title="Frozen"
+                    },
+                    new Movie
+                    {
+                        Title="Mulan"
                     }
                 };
 
@@ -64,15 +72,24 @@ namespace CinemaBerras.Data
                         MovieId=2,
                         SalonId=1,
                         Time=DateTime.UtcNow.AddHours(1)
+                    },
+                    new Display
+                    {
+                        MovieId=3,
+                        SalonId=1,
+                        Time=DateTime.UtcNow.AddHours(3)
+                    },
+                    new Display
+                    {
+                        MovieId=4,
+                        SalonId=2,
+                        Time=DateTime.UtcNow.AddMinutes(30)
                     }
 
                 };
                 cinemaContext.Displays.AddRange(displays);
                 cinemaContext.SaveChanges();
-
             }
-
-
         }
     }
 }
