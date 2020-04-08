@@ -1,20 +1,20 @@
 ﻿@model CinemaBerras.Models.Display
-@*@{
-        ViewData["Title"] = "Confirm";
-    }*@
 
-<h2 class="text-success">Your booking is confirmed!</h2>
-<div class="border container" style="padding:30px">
+<h2 class="color-green">Your booking is confirmed!</h2>
+<div class="border container p-1">
 
-    <h4 class="">
-        You booked  @Model.TicketsSold  @(@Model.TicketsSold ==1?"ticket" : "tickets") for the movie @Model.Movie.Title
-        that starts at @Model.Time.Hour:@Model.Time.Minute in @Model.Salon.Name!
-        <br /><br /><br />
-        Enjoy!
-    </h4>
+    <i class="fa fa-check fa-5x color-green" aria-hidden="true"></i>
+    <p>
+        You booked
+        <b>@Model.TicketsSold  @(@Model.TicketsSold ==1?"ticket" : "tickets")</b>
+        <i class="fa fa-ticket fa-2x color-gold" aria-hidden="true"></i>
+        for the movie <b> @Model.Movie.Title </b>
+        <i class="fa fa-film color-gold fa-2x" aria-hidden="true"></i>
+        <br /><br />
+        Be in <b>@Model.Salon.Name</b> at <b>@Model.Time.ToString("HH:mm")</b> and enjoy!
 
-
+    </p>
 </div>
-<div class="col-3">
-    <a asp-controller="Home" asp-action="Index">Back to movie list</a>
+<div>
+    <a class="color-green" asp-controller="Home" asp-action="Index">Back to movie list</a>
 </div>

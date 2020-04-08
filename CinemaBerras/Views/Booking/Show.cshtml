@@ -4,10 +4,10 @@
     }*@
 
 
-<h4>Book your tickets</h4>
+<h3>Book your tickets <i class="fa fa-ticket fa-1x color-gold" aria-hidden="true"></i></h3>
 <hr />
 
-<div class="border container" style="padding:30px">
+<div class="border container">
     <form method="post">
         @if (Model.Id != 0)
         {
@@ -15,70 +15,186 @@
         }
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="form-group row">
-            <div class="col-3">
-                <label asp-for="Movie.Title"></label>
-            </div>
+
             <div class="col-6">
+                <i class="fa fa-film color-gold fa-1x" aria-hidden="true"></i>
                 @Model.Movie.Title
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-3">
-                <label asp-for="Time"></label>
-            </div>
             <div class="col-6">
+                <i class="fa fa-clock-o color-gold fa-1x" aria-hidden="true"></i>
                 @Model.Time.ToString("HH:mm")
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-3">
-                <label asp-for="Salon.Name"></label>
-            </div>
             <div class="col-6">
                 @Model.Salon.Name
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-3">
-                @*<label asp-for="TicketsAvailable"></label>*@
-                <label>Available seats</label>
-            </div>
             <div class="col-6">
+
+
                 @if (Model.TicketsSold == 0)
                 {
                     @Model.Salon.Seats
                 }
                 else
                 {
-                    <span>@(Model.Salon.Seats - Model.TotalTicketsSold)</span>
-                }
+                    @(Model.Salon.Seats - Model.TotalTicketsSold)
+                } seats left
             </div>
         </div>
 
         <div class="form-group row">
-            <div class="col-3">
-                <label asp-for="TicketsSold">Book tickets (max. 12)</label>
+            <div class="col-6">
+                <label asp-for="TicketsSold">No tickets (max. 12)</label>
             </div>
             <div class="col-6">
                 <input min="1" value="1" asp-for="TicketsSold" class="form-control" />
-                @*   <input Type="number" min="1" value="1" name="numberOfBookedTickets" asp-for="TicketsSold" class="form-control" />*@
-
                 <span asp-validation-for="TicketsSold" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-3">
-                <a asp-controller="Home" asp-action="Index">Back to movie list</a>
-            </div>
+            <div class="col-6"></div>
             <div class="col-6">
+                <input type="submit" asp-controller="Booking" asp-action="Show" value="Book tickets" class="btn btn-success form-control " />
 
-
-                <input type="submit" asp-controller="Booking" asp-action="Show" value="Book tickets" class="btn btn-success form-control" />
-
+            </div>
+        </div>
+        <div class="form-group-row">
+            <div>
+                <a class="color-green" asp-controller="Home" asp-action="Index"> < Back to movie list</a>
             </div>
         </div>
     </form>
 </div>
+
+
+
+
+
+@*<div class="border container p-1">
+        <form method="post">
+            @if (Model.Id != 0)
+            {
+                <input type="hidden" asp-for="Id" />
+            }
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Movie.Title"></label>
+                </div>
+                <div class="col-12">
+                    @Model.Movie.Title
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Time"></label>
+                </div>
+                <div class="col-12">
+                    @Model.Time.ToString("HH:mm")
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Salon.Name"></label>
+                </div>
+                <div class="col-12">
+                    @Model.Salon.Name
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+
+                    <label>Seats left</label>
+                </div>
+                <div class="col-12">
+                    @if (Model.TicketsSold == 0)
+                    {
+                        @Model.Salon.Seats
+                    }
+                    else
+                    {
+                        @(Model.Salon.Seats - Model.TotalTicketsSold)
+                    } seats left
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="TicketsSold">No tickets (max. 12)</label>
+                </div>
+                <div class="col-6">
+                    <input min="1" value="1" asp-for="TicketsSold" class="form-control" />
+                    <span asp-validation-for="TicketsSold" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <a asp-controller="Home" asp-action="Index"> < Back to movie list</a>
+                </div>
+
+                <div class="col-6">
+                    <input type="submit" asp-controller="Booking" asp-action="Show" value="Book tickets" class="btn btn-success form-control " />
+
+                </div>
+            </div>
+            <div class="form-group-row">
+                <div>
+                    <a asp-controller="Home" asp-action="Index"> < Back to movie list</a>
+                </div>
+            </div>
+        </form>
+    </div>*@
+
+
+
+
+
+@*<div class="container border col-12">
+
+        <form method="post">
+            @if (Model.Id != 0)
+            {
+                <input type="hidden" asp-for="Id" />
+            }
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div>
+                @Model.Movie.Title
+            </div>
+            <div>
+                @Model.Time.ToString("HH:mm")
+            </div>
+            <div>
+                @Model.Salon.Name
+            </div>
+            <div>
+
+                @if (Model.TicketsSold == 0)
+                {
+                    @Model.Salon.Seats
+                }
+                else
+                {
+                    @(Model.Salon.Seats - Model.TotalTicketsSold)
+                } seats left
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-6" asp-for="TicketsSold">No tickets (max. 12)</label>
+                <input min="1" value="1" asp-for="TicketsSold" class="form-control col-2 " />
+                <span asp-validation-for="TicketsSold" class="text-danger"></span>
+            </div>
+            <div class="form-group row col-2">
+                <input type="submit" asp-controller="Booking" asp-action="Show" value="Book tickets" class="btn btn-success form-control " />
+            </div>
+
+            <div class="form-group">
+                <a asp-controller="Home" asp-action="Index"> < Back to movie list</a>
+            </div>
+
+        </form>
+    </div>*@
 
 
 

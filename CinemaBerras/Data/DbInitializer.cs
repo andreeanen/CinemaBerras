@@ -47,12 +47,12 @@ namespace CinemaBerras.Data
                 {
                     new Salon
                     {
-                           Name="Room 1",
+                           Name="Salon 1",
                            Seats = 10
                     },
                     new Salon
                     {
-                            Name="Room 2",
+                            Name="Salon 2",
                             Seats=100
                     }
                 };

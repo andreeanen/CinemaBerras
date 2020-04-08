@@ -2,7 +2,6 @@
 using CinemaBerras.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,12 +10,12 @@ namespace CinemaBerras.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
         private readonly CinemaContext _cinemaContext;
 
-        public HomeController(ILogger<HomeController> logger, CinemaContext cinemaContext)
+        public HomeController(/*ILogger<HomeController> logger, */CinemaContext cinemaContext)
         {
-            _logger = logger;
+            //_logger = logger;
             _cinemaContext = cinemaContext;
         }
 
@@ -73,10 +72,10 @@ namespace CinemaBerras.Controllers
             return View(await displays.AsNoTracking().ToListAsync());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
