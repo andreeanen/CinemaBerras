@@ -10,6 +10,7 @@ namespace CinemaBerras.Models
         [DisplayFormat(DataFormatString = "{HH:mm}")]
         [Display(Name = "Starts at")]
         public DateTime Time { get; set; }
+        public DateTime Date { get; set; }
         public int MovieId { get; set; }
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }

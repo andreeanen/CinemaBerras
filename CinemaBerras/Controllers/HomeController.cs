@@ -29,8 +29,8 @@ namespace CinemaBerras.Controllers
 
         public async Task<IActionResult> Index(string sortOrder)
         {
-            ViewData["TitleSortParm"] = sortOrder == "title_asc" ? "title_desc" : "title_asc";
-            ViewData["TimeSortParm"] = sortOrder == "starts_asc" ? "starts_desc" : "starts_asc";
+            ViewData["TitleSortParm"] = sortOrder == "title_desc" ? "title_asc" : "title_desc";
+            ViewData["TimeSortParm"] = sortOrder == "starts_desc" ? "starts_asc" : "starts_desc";
             ViewData["SeatsSortParm"] = sortOrder == "seats_asc" ? "seats_desc" : "seats_asc";
             ViewData["SalonSortParm"] = sortOrder == "salon_asc" ? "salon_desc" : "salon_asc";
             var displays = from d in _cinemaContext.Displays
