@@ -5,6 +5,11 @@
     color: #449A73;
 }
 
+.my-button {
+    background-color: #449A73;
+    color: whitesmoke;
+}
+
 .color-gold {
     color: #E8972C;
 }
@@ -14,7 +19,8 @@
 }
 
 .navbar {
-    background-color: #436555;
+    background-color: whitesmoke;
+    border-radius: 5px;
 }
 
 body {
@@ -28,4 +34,17 @@ body {
 
 .card-header {
     background-color: #283D33;
+}
+
+.cinema-title {
+    color: #283D33;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+body {
+    font-family: 'Gotu', sans-serif;
 }

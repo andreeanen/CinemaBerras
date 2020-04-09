@@ -48,7 +48,7 @@ namespace CinemaBerras.Data
                     new Salon
                     {
                            Name="Salon 1",
-                           Seats = 10
+                           Seats = 50
                     },
                     new Salon
                     {
@@ -56,6 +56,7 @@ namespace CinemaBerras.Data
                             Seats=100
                     }
                 };
+
                 cinemaContext.Salons.AddRange(salons);
                 cinemaContext.SaveChanges();
             }
@@ -69,48 +70,40 @@ namespace CinemaBerras.Data
                     {
                        MovieId=1,
                        SalonId=2,
-                       Date=DateTime.UtcNow,
                        Time=DateTime.Parse("21:30")
                     },
                     new Display
                     {
                         MovieId=2,
                         SalonId=1,
-                        Date=DateTime.UtcNow,
                         Time=DateTime.Parse("13:00")
                     },
                     new Display
                     {
                         MovieId=3,
                         SalonId=1,
-                        Date=DateTime.UtcNow,
                         Time=DateTime.Parse("15:00")
                     },
                     new Display
                     {
                         MovieId=4,
                         SalonId=2,
-                        Date=DateTime.UtcNow,
                         Time=DateTime.Parse("19:00")
                     },
                     new Display
                     {
                         MovieId=3,
                         SalonId=2,
-                        Date=DateTime.UtcNow,
                         Time=DateTime.Parse("17:00")
                     },
                     new Display
                     {
                         MovieId=5,
                         SalonId=1,
-                        Date=DateTime.UtcNow,
                         Time=DateTime.Parse("17:00")
                     }
-
-
-
                 };
+
                 cinemaContext.Displays.AddRange(displays);
                 cinemaContext.SaveChanges();
             }

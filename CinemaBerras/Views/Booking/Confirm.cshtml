@@ -1,14 +1,14 @@
 ﻿@model CinemaBerras.Models.Display
 
-<h2 class="color-green">Your booking is confirmed!</h2>
+<h2 class="color-green mt-4">Your booking is confirmed!</h2>
 <i class="fa fa-check fa-5x color-green" aria-hidden="true"></i>
 <div class="border container p-1">
 
-    <p>
+    <p class="m-2">
         You booked
-        <b>@Model.TicketsSold  @(@Model.TicketsSold ==1?"ticket" : "tickets")</b>
-        <i class="fa fa-ticket fa-2x color-gold" aria-hidden="true"></i>
-        for the movie <b> @Model.Movie.Title </b>
+        <b>@Model.TicketsSold  @(@Model.TicketsSold ==1?"ticket " : "tickets ")</b>
+        <span>   <i class="fas fa-ticket-alt fa-2x color-gold"></i>   </span>
+        for the movie   <b> @Model.Movie.Title </b>
         <i class="fa fa-film color-gold fa-2x" aria-hidden="true"></i>
         <br /><br />
         Be in <b>@Model.Salon.Name</b> at <b>@Model.Time.ToString("HH:mm")</b> and enjoy!

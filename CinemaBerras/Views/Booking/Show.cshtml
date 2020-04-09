@@ -4,34 +4,35 @@
     }*@
 
 
-<h3>Book your tickets <i class="fa fa-ticket fa-1x color-gold" aria-hidden="true"></i></h3>
+<h3 class="mt-4">Book your tickets <i class="fas fa-ticket-alt color-gold"></i></h3>
 <hr />
 
-<div class="border container custom-border">
+<div class="border container custom-border mt-2">
     <form method="post">
         @if (Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
         }
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-        <div class="form-group row">
+        <div class="form-group row mt-3">
 
             <div class="col-6">
-                <i class="fa fa-film color-gold fa-1x" aria-hidden="true"></i>
+                <i class="fa fa-film color-gold " aria-hidden="true"></i>
                 @Model.Movie.Title
             </div>
             <div class="col-6">
-                <i class="fa fa-clock-o color-gold fa-1x" aria-hidden="true"></i>
+                <i class="fas fa-clock color-gold"></i>
                 @Model.Time.ToString("HH:mm")
             </div>
         </div>
         <div class="form-group row">
             <div class="col-6">
+                <i class="fas fa-door-open color-gold"></i>
                 @Model.Salon.Name
             </div>
             <div class="col-6">
 
-
+                <i class="fas fa-couch color-gold"></i>
                 @if (Model.TicketsSold == 0)
                 {
                     @Model.Salon.Seats
@@ -69,7 +70,7 @@
         <div class="form-group row">
             <div class="col-6"></div>
             <div class="col-6">
-                <input type="submit" asp-controller="Booking" asp-action="Show" value="Book tickets" class="btn btn-success form-control " />
+                <input type="submit" asp-controller="Booking" asp-action="Show" value="Book tickets" class="btn my-button form-control " />
 
             </div>
         </div>
