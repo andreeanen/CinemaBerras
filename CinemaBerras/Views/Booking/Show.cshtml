@@ -45,9 +45,23 @@
 
         <div class="form-group row">
             <div class="col-6">
-                <label asp-for="TicketsSold">No tickets (max. 12)</label>
+                <label asp-for="TicketsSold">Number of tickets (max. 12)</label>
             </div>
             <div class="col-6">
+
+                @*<div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+                        </div>
+
+                        <input id="qty_input" min="1" value="1" asp-for="TicketsSold" class="form-control " />
+                        <div class="input-group-append">
+                            <button class="btn btn-dark btn-sm " id="plus-btn"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>*@
+
+
                 <input min="1" value="1" asp-for="TicketsSold" class="form-control" />
                 <span asp-validation-for="TicketsSold" class="text-danger"></span>
             </div>
@@ -59,12 +73,16 @@
 
             </div>
         </div>
-        <div class="form-group-row">
-            <div>
-                <a class="color-green" asp-controller="Home" asp-action="Index"> < Back to movie list</a>
-            </div>
-        </div>
+        @*<div class="form-group-row">
+                <div>
+                    <a class="color-green" asp-controller="Home" asp-action="Index"> < Back to movie list</a>
+                </div>
+            </div>*@
     </form>
+</div>
+<br />
+<div>
+    <a class="color-green" asp-controller="Home" asp-action="Index"> < Back to movie list</a>
 </div>
 
 

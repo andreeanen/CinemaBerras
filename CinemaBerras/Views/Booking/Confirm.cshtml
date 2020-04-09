@@ -1,9 +1,9 @@
 ﻿@model CinemaBerras.Models.Display
 
 <h2 class="color-green">Your booking is confirmed!</h2>
+<i class="fa fa-check fa-5x color-green" aria-hidden="true"></i>
 <div class="border container p-1">
 
-    <i class="fa fa-check fa-5x color-green" aria-hidden="true"></i>
     <p>
         You booked
         <b>@Model.TicketsSold  @(@Model.TicketsSold ==1?"ticket" : "tickets")</b>
@@ -15,6 +15,8 @@
 
     </p>
 </div>
+<br />
+
 <div>
-    <a class="color-green" asp-controller="Home" asp-action="Index">Back to movie list</a>
+    <a class="color-green" asp-controller="Home" asp-action="Index"> < Back to movie list</a>
 </div>

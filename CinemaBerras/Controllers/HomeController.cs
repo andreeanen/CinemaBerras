@@ -40,10 +40,12 @@ namespace CinemaBerras.Controllers
             ViewData["SalonDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "salon_desc" : "salon_desc";
 
 
-            //ViewData["TitleSortParm"] = sortOrder == "title_asc";
-            //ViewData["TimeSortParm"] = sortOrder == "starts_desc" ? "starts_asc" : "starts_desc";
-            //ViewData["SeatsSortParm"] = sortOrder == "seats_asc" ? "seats_desc" : "seats_asc";
-            //ViewData["SalonSortParm"] = sortOrder == "salon_asc" ? "salon_desc" : "salon_asc";
+            //ViewData["TitleSortParm"] = sortOrder == "title_asc" ? "title_asc" : "title_desc";
+            //ViewData["TimeSortParm"] = sortOrder == "starts_asc" ? "starts_asc" : "starts_desc";
+            //ViewData["SeatsSortParm"] = sortOrder == "seats_asc" ? "seats_asc" : "seats_desc";
+            //ViewData["SalonSortParm"] = sortOrder == "salon_asc" ? "salon_asc" : "salon_desc";
+
+
             var displays = from d in _cinemaContext.Displays
                            .Include(d => d.Movie)
                            .Include(d => d.Salon)
