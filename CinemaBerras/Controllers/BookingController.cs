@@ -62,7 +62,6 @@ namespace CinemaBerras.Controllers
             return RedirectToAction("Confirm", new { id = Display.Id });
         }
 
-
         public IActionResult Confirm(int? id)
         {
             var oldEntity = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).FirstOrDefault(d => d.Id == id);

@@ -11,22 +11,11 @@ namespace CinemaBerras.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
         private readonly CinemaContext _cinemaContext;
-
-        public HomeController(/*ILogger<HomeController> logger, */CinemaContext cinemaContext)
+        public HomeController(CinemaContext cinemaContext)
         {
-            //_logger = logger;
             _cinemaContext = cinemaContext;
         }
-
-        //public IActionResult Index()
-        //{
-        //    var displays = _cinemaContext.Displays.Include(d => d.Movie).Include(d => d.Salon).ToList();
-
-        //    return View(displays);
-        //}
-
         public async Task<IActionResult> Index(string sortOrder)
         {
 
@@ -40,17 +29,10 @@ namespace CinemaBerras.Controllers
             ViewData["SalonDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "salon_desc" : "salon_desc";
 
 
-            //ViewData["TitleSortParm"] = sortOrder == "title_asc" ? "title_asc" : "title_desc";
-            //ViewData["TimeSortParm"] = sortOrder == "starts_asc" ? "starts_asc" : "starts_desc";
-            //ViewData["SeatsSortParm"] = sortOrder == "seats_asc" ? "seats_asc" : "seats_desc";
-            //ViewData["SalonSortParm"] = sortOrder == "salon_asc" ? "salon_asc" : "salon_desc";
-
-
             var displays = from d in _cinemaContext.Displays
                            .Include(d => d.Movie)
                            .Include(d => d.Salon)
                            select d;
-
 
             switch (sortOrder)
             {
@@ -86,10 +68,6 @@ namespace CinemaBerras.Controllers
             return View(await displays.AsNoTracking().ToListAsync());
         }
 
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
