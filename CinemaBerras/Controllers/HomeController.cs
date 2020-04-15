@@ -2,7 +2,6 @@
 using CinemaBerras.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,20 +17,9 @@ namespace CinemaBerras.Controllers
         }
         public async Task<IActionResult> Index(string sortOrder)
         {
-
-            ViewData["TitleAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_asc" : "title_asc";
-            ViewData["TitleDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "title_desc";
-            ViewData["TimeAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "starts_asc" : "starts_asc";
-            ViewData["TimeDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "starts_desc" : "starts_desc";
-            ViewData["SeatsAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "seats_asc" : "seats_asc";
-            ViewData["SeatsDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "seats_desc" : "seats_desc";
-            ViewData["SalonAscSortParm"] = String.IsNullOrEmpty(sortOrder) ? "salon_asc" : "salon_asc";
-            ViewData["SalonDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "salon_desc" : "salon_desc";
-
-
             var displays = from d in _cinemaContext.Displays
-                           .Include(d => d.Movie)
-                           .Include(d => d.Salon)
+               .Include(d => d.Movie)
+               .Include(d => d.Salon)
                            select d;
 
             switch (sortOrder)

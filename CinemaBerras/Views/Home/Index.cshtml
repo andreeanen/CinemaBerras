@@ -20,17 +20,17 @@
                     Sort movies
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TitleAscSortParm"]">Movie title <i class="fas fa-sort-amount-up"></i></a>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TitleDescSortParm"]">Movie title <i class="fas fa-sort-amount-down-alt"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="title_asc">Movie title <i class="fas fa-sort-amount-up"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="title_desc">Movie title <i class="fas fa-sort-amount-down-alt"></i></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TimeAscSortParm"]">Time <i class="fas fa-sort-amount-up"></i></a>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["TimeDescSortParm"]">Time <i class="fas fa-sort-amount-down-alt"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="starts_asc">Time <i class="fas fa-sort-amount-up"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="starts_desc">Time <i class="fas fa-sort-amount-down-alt"></i></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SeatsAscSortParm"]">Free seats <i class="fas fa-sort-amount-up"></i></a>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SeatsDescSortParm"]">Free seats <i class="fas fa-sort-amount-down-alt"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="seats_asc">Free seats <i class="fas fa-sort-amount-up"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="seats_desc">Free seats <i class="fas fa-sort-amount-down-alt"></i></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SalonAscSortParm"]">Salon name <i class="fas fa-sort-amount-up"></i></a>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["SalonDescSortParm"]">Salon name <i class="fas fa-sort-amount-down-alt"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="salon_asc">Salon name <i class="fas fa-sort-amount-up"></i></a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="salon_desc">Salon name <i class="fas fa-sort-amount-down-alt"></i></a>
                 </div>
             </li>
         </ul>
